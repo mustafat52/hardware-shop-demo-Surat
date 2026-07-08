@@ -6,6 +6,7 @@ export interface Product {
   category: string;
   price: number;
   variants: Variant[];
+  imageUrl?: string;
   createdAt: number;
 }
 

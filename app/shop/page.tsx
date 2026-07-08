@@ -21,9 +21,14 @@ export default function ShopCatalogPage() {
         {products.map((p) => (
           <Link key={p.id} href={`/shop/product/${p.id}`}
             className="bg-white rounded-lg p-4 border border-gray-200 flex justify-between items-center hover:border-steel transition">
-            <div>
-              <div className="text-xs uppercase text-gray-400">{p.category}</div>
-              <div className="font-display font-bold text-lg">{p.name}</div>
+            <div className="flex items-center gap-3">
+              {p.imageUrl && (
+                <img src={p.imageUrl} alt={p.name} className="w-12 h-12 object-cover rounded border border-gray-200" />
+              )}
+              <div>
+                <div className="text-xs uppercase text-gray-400">{p.category}</div>
+                <div className="font-display font-bold text-lg">{p.name}</div>
+              </div>
             </div>
             <div className="font-mono text-orangeDark font-semibold">{formatCurrency(p.price)}</div>
           </Link>

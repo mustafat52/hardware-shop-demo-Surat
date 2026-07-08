@@ -11,6 +11,9 @@ export default function ProductTag({ product, baseUrl }: { product: Product; bas
       <div className="absolute -top-2 left-4 w-3 h-3 bg-charcoal rounded-full ring-4 ring-paper" />
       <div className="flex justify-between items-start gap-3">
         <div>
+          {product.imageUrl && (
+            <img src={product.imageUrl} alt={product.name} className="w-10 h-10 object-cover rounded mb-2 border border-gray-200" />
+          )}
           <div className="text-[11px] uppercase tracking-wide text-gray-400 mb-1">{product.category}</div>
           <div className="font-display font-bold text-lg leading-tight">{product.name}</div>
           <div className="font-mono font-semibold text-orangeDark text-lg mt-1">

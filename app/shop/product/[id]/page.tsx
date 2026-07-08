@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Header from "@/components/Header";
 import VariantSelector from "@/components/VariantSelector";
-import QRCode from "@/components/QRCode";
 import { getProductById } from "@/lib/products";
 import { formatCurrency } from "@/lib/format";
 import type { Product, CartItem } from "@/lib/types";
@@ -62,7 +61,17 @@ export default function ProductDetailPage() {
       <Header subtitle="PRODUCT — scanned from shelf QR" />
       <div className="p-6">
         <div className="bg-white rounded-lg p-5 grid grid-cols-1 sm:grid-cols-[140px_1fr] gap-5 mb-5">
-          <QRCode value={typeof window !== "undefined" ? window.location.href : ""} size={120} />
+          {product.imageUrl ? (
+            <img
+              src={product.imageUrl}
+              alt={product.name}
+              className="w-full sm:w-[140px] h-[140px] object-cover rounded-md border border-gray-200"
+            />
+          ) : (
+            <div className="w-full sm:w-[140px] h-[140px] rounded-md border border-dashed border-gray-300 bg-paper/40 flex items-center justify-center text-center px-2">
+              <span className="text-xs text-gray-400">No photo added yet</span>
+            </div>
+          )}
           <div>
             <div className="text-xs uppercase text-gray-400">{product.category}</div>
             <div className="font-display font-extrabold text-2xl">{product.name}</div>
