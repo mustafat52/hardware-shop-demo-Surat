@@ -60,19 +60,21 @@ export default function ProductDetailPage() {
     <div className="max-w-3xl mx-auto min-h-screen bg-paper">
       <Header subtitle="PRODUCT — scanned from shelf QR" />
       <div className="p-6">
-        <div className="bg-white rounded-lg p-5 grid grid-cols-1 sm:grid-cols-[140px_1fr] gap-5 mb-5">
+        <div className="bg-white rounded-lg overflow-hidden mb-5">
           {product.imageUrl ? (
-            <img
-              src={product.imageUrl}
-              alt={product.name}
-              className="w-full sm:w-[140px] h-[140px] object-cover rounded-md border border-gray-200"
-            />
+            <div className="w-full bg-paper/60 flex items-center justify-center" style={{ maxHeight: 280 }}>
+              <img
+                src={product.imageUrl}
+                alt={product.name}
+                className="w-full max-h-[280px] object-contain"
+              />
+            </div>
           ) : (
-            <div className="w-full sm:w-[140px] h-[140px] rounded-md border border-dashed border-gray-300 bg-paper/40 flex items-center justify-center text-center px-2">
+            <div className="w-full h-[160px] border-b border-dashed border-gray-300 bg-paper/40 flex items-center justify-center">
               <span className="text-xs text-gray-400">No photo added yet</span>
             </div>
           )}
-          <div>
+          <div className="p-5">
             <div className="text-xs uppercase text-gray-400">{product.category}</div>
             <div className="font-display font-extrabold text-2xl">{product.name}</div>
             <div className="font-mono text-orangeDark font-semibold text-xl my-2">
